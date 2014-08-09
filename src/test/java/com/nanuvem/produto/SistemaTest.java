@@ -15,8 +15,21 @@ public class SistemaTest {
 		Sistema sistema = new MeuSistema();
 		sistema.cadastrarProdutoSimples("Trigo", 15.33, "kg", 500);
 		
-		String relatorioEstoqueEsperado = "Trigo|15.33|kg|500.000";
+		String relatorioEstoqueEsperado = "Trigo|15.33|kg|500.000;";
 		
 		Assert.assertEquals(relatorioEstoqueEsperado, sistema.relatorioEstoque());
 	}
+	
+	@Test
+	public void cadastroProdutosSimples() {
+		Sistema sistema = new MeuSistema();
+		sistema.cadastrarProdutoSimples("Trigo", 15.33, "kg", 500);
+		sistema.cadastrarProdutoSimples("Laranja", 3.05, "kg", 100);
+		
+		String relatorioEstoqueEsperado = "Trigo|15.33|kg|500.000;"
+				+ "Laranja|3.05|kg|100.000;";
+		
+		Assert.assertEquals(relatorioEstoqueEsperado, sistema.relatorioEstoque());
+	}
+
 }
